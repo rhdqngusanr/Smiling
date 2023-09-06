@@ -1,4 +1,4 @@
-package muk.dev.happy_smiling
+package muk.dev.happy_smiling.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
