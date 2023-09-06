@@ -1,4 +1,7 @@
 package muk.dev.happy_smiling.model
 
-class TestUIModel {
+class TestUIModel
+
+fun TestUIModel.toDomainModel(){
+
 }
