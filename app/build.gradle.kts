@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "muk.dev.happy_smiling"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "muk.dev.happy_smiling"

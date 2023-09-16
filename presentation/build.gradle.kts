@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "muk.dev.presentation"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 28
@@ -52,7 +52,9 @@ android {
 dependencies {
     implementation(project(":domain"))
 
-    implementation ("androidx.navigation:navigation-compose:2.7.2")
+
+    implementation("androidx.navigation:navigation-compose:2.7.2")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
