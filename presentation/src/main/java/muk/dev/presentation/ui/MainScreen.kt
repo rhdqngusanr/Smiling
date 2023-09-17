@@ -29,6 +29,7 @@ import androidx.navigation.compose.rememberNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import muk.dev.presentation.R
 import muk.dev.presentation.ui.theme.Happy_smilingTheme
+import muk.dev.presentation.ui.theme.colorPrimaryDark
 
 
 sealed class MainNavigationItem(var route: String, var name: String) {
@@ -79,7 +80,7 @@ fun MainBottomNavigationBar(navController: NavHostController) {
         MainNavigationItem.MyPage
     )
     BottomNavigation(
-        backgroundColor = Color(0xffff0000),
+        backgroundColor = colorPrimaryDark,//Color(0xffff0000),
         contentColor = Color(0xff00ff00)
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
