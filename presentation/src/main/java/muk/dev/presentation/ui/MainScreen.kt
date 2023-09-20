@@ -42,10 +42,10 @@ import muk.dev.presentation.ui.theme.colorPrimaryDark
 import muk.dev.presentation.viewmodel.MainViewModel
 
 
-sealed class MainNavigationItem(var route: String,val icon : ImageVector, var name: String) {
-    object Main : MainNavigationItem("Main", Icons.Filled.Home ,"Main")
-    object Category : MainNavigationItem("Category",Icons.Filled.Star, "Category")
-    object MyPage : MainNavigationItem("MyPage",Icons.Filled.AccountBox, "MyPage")
+sealed class MainNavigationItem(var route: String, val icon: ImageVector, var name: String) {
+    object Main : MainNavigationItem("Main", Icons.Filled.Home, "Main")
+    object Category : MainNavigationItem("Category", Icons.Filled.Star, "Category")
+    object MyPage : MainNavigationItem("MyPage", Icons.Filled.AccountBox, "MyPage")
 }
 
 @Preview(showBackground = true)
@@ -65,7 +65,11 @@ fun MainScreen() {
     val navController = rememberNavController()
 
     Scaffold(
-        topBar={ Header(viewModel)},
+        topBar = {
+
+            Header(viewModel)
+
+        },
         scaffoldState = scaffoldState,
         bottomBar = {
             MainBottomNavigationBar(navController = navController)
@@ -83,20 +87,23 @@ fun MainScreen() {
         MainNavigationScreen(navController = navController)
     }
 }
+
 @Composable
-fun Header(viewModel: MainViewModel){
+fun Header(viewModel: MainViewModel) {
     TopAppBar(
-        title = { Text(text = "싱글벙글")},
+        backgroundColor = colorPrimaryDark,
+        title = { Text(text = "싱글벙글") },
         actions = {
             IconButton(onClick = {
                 viewModel.openSearchForm()
             }) {
-                Icon(Icons.Filled.Search,"SearchIcon")
+                Icon(Icons.Filled.Search, "SearchIcon")
 
             }
         }
-        )
+    )
 }
+
 @Composable
 fun MainBottomNavigationBar(navController: NavHostController) {
     val bottomNavigationItems = listOf(
@@ -113,10 +120,10 @@ fun MainBottomNavigationBar(navController: NavHostController) {
 
         bottomNavigationItems.forEach { item ->
             BottomNavigationItem(selected = currentRoute == item.route, onClick = {
-                navController.navigate(item.route){
+                navController.navigate(item.route) {
                     navController.graph.startDestinationRoute?.let {
-                        popUpTo(it){
-                            saveState=true
+                        popUpTo(it) {
+                            saveState = true
                         }
                         launchSingleTop = true
                         restoreState = true
@@ -124,7 +131,7 @@ fun MainBottomNavigationBar(navController: NavHostController) {
                 }
 
 
-            }, icon = { Icon(item.icon ,item.route) })
+            }, icon = { Icon(item.icon, item.route) })
         }
     }
 }
@@ -132,14 +139,14 @@ fun MainBottomNavigationBar(navController: NavHostController) {
 @Composable
 fun MainNavigationScreen(navController: NavHostController) {
 
-    NavHost(navController = navController, startDestination = MainNavigationItem.Main.route){
-        composable(MainNavigationItem.Main.route){
+    NavHost(navController = navController, startDestination = MainNavigationItem.Main.route) {
+        composable(MainNavigationItem.Main.route) {
             Text(text = "hello main ")
         }
-        composable(MainNavigationItem.Category.route){
+        composable(MainNavigationItem.Category.route) {
             Text(text = "hello Category")
         }
-        composable(MainNavigationItem.MyPage.route){
+        composable(MainNavigationItem.MyPage.route) {
             Text(text = "hello MyPage ")
         }
     }
